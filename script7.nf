@@ -4,7 +4,14 @@
 params.reads = "$projectDir/data/ggal/gut_{1,2}.fq"
 params.transcriptome_file = "$projectDir/data/ggal/transcriptome.fa"
 params.multiqc = "$projectDir/multiqc"
-params.outdir = "results"
+params.outdir = null
+
+// Validação dos parâmetros obrigatórios
+if (params.reads == null || params.transcriptome_file == null || params.outdir == null) {
+    log.error "Parâmetros obrigatórios não foram fornecidos corretamente. Verifique se os caminhos para os arquivos de leitura (reads), o arquivo de transcriptoma (transcriptome_file) e o diretório de saída (outdir) estão definidos."
+    System.exit(1) // Encerra o script com código de erro 1
+}
+
 log.info """\
     R N A S E Q - N F   P I P E L I N E
     ===================================
@@ -32,6 +39,7 @@ process INDEX {
 }
 
 process QUANTIFICATION {
+    // Processo para realizar a quantificação com Salmon
     tag "Salmon on $sample_id"
     publishDir params.outdir, mode:'copy'
 
@@ -93,3 +101,4 @@ workflow {
 workflow.onComplete {
     log.info ( workflow.success ? "\nDone! Open the following report in your browser --> $params.outdir/multiqc_report.html\n" : "Oops .. something went wrong" )
 }
+
