@@ -1,2 +1,2 @@
 # hello
-Treinamento Nextflow
+Treinamento Nextflow [Disciplina: Tópicos em Bioinformática III]
