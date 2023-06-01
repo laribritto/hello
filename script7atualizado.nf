@@ -81,7 +81,7 @@ process FASTQC {
 
 process MULTIQC {
     container 'quay.io/biocontainers/multiqc:1.14--pyhdfd78af_0'
-    conda 'bioconda::fastqc=1.14'
+    conda 'bioconda::multiqc=1.14'
     publishDir params.outdir, mode:'copy'
 
     input:
