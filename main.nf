@@ -2,7 +2,7 @@
  * pipeline input parameters
  */
 params.reads = "$projectDir/gut_{1,2}.fq"
-params.transcriptome_file = "$projectDir/data/ggal/transcriptome.fa"
+params.transcriptome_file = "$projectDir/transcriptome.fa"
 params.multiqc = "$projectDir/multiqc"
 params.outdir = "resultados"
 
