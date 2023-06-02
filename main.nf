@@ -12,6 +12,7 @@ if (params.reads == null || params.transcriptome_file == null || params.outdir =
     System.exit(1) // Encerra o script com código de erro 1
 }
 
+
 log.info """\
     R N A S E Q - N F   P I P E L I N E
     ===================================
